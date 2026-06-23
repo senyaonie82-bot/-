@@ -24,6 +24,8 @@ from cad_config import (
     TITLE_BLOCK_HEIGHT,
 )
 
+TEXT_STYLE = "CHINESE_TEXT"
+
 
 def create_document() -> ezdxf.document.Drawing:
     doc = ezdxf.new("R2010", setup=True)
@@ -41,6 +43,12 @@ def create_document() -> ezdxf.document.Drawing:
                 },
             )
 
+    if TEXT_STYLE not in doc.styles:
+        doc.styles.new(
+            TEXT_STYLE,
+            dxfattribs={"font": "simsun.ttc", "bigfont": ""},
+        )
+
     return doc
 
 
@@ -54,7 +62,7 @@ def _add_text(
 ) -> None:
     msp.add_text(
         text,
-        dxfattribs={"layer": layer, "height": height},
+        dxfattribs={"layer": layer, "height": height, "style": TEXT_STYLE},
     ).set_placement(insert)
 
 
@@ -113,7 +121,7 @@ def add_elevation_frame(doc: ezdxf.document.Drawing, extra_notes: Sequence[str] 
         *extra_notes,
     ]
     for index, note in enumerate(notes):
-        _add_text(msp, note, (notes_x + 8, -half_h + 32 - index * 8), height=4.2)
+        _add_text(msp, note, (notes_x + 8, -half_h + 34 - index * 7), height=3.8)
 
     legend_x = half_w - NOTES_BLOCK_WIDTH - LEGEND_BLOCK_WIDTH + 2
     _add_text(msp, "图例", (legend_x + 8, -half_h + 48), height=8.0, layer="TITLE_BLOCK")
