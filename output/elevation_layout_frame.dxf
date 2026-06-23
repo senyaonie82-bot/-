@@ -489,7 +489,7 @@ $SKPOLY
   9
 $TDCREATE
  40
-2461215.7552777776
+2461215.7753703706
   9
 $TDUCREATE
  40
@@ -497,7 +497,7 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2461215.7552777776
+2461215.7753703706
   9
 $TDUUPDATE
  40
@@ -549,7 +549,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-97
+AA
   9
 $SURFTAB1
  70
@@ -929,11 +929,11 @@ $PSTYLEMODE
   9
 $FINGERPRINTGUID
   2
-{49B42956-6CA4-450E-BE2F-D59489700AE9}
+{4AA3A469-0951-4B58-9FB1-AF472879A04F}
   9
 $VERSIONGUID
   2
-{6EBABCC4-78EF-4FA7-A2C2-3F76FE9E2E7F}
+{2ACC987F-38DE-4D42-9C51-EBD1A08A59DE}
   9
 $EXTNAMES
 290
@@ -1323,9 +1323,9 @@ ISM
   0
 CLASS
   1
-LAYOUT
+ACDBPLACEHOLDER
   2
-AcDbLayout
+AcDbPlaceHolder
   3
 ObjectDBX Classes
  90
@@ -1339,9 +1339,9 @@ ObjectDBX Classes
   0
 CLASS
   1
-ACDBPLACEHOLDER
+LAYOUT
   2
-AcDbPlaceHolder
+AcDbLayout
   3
 ObjectDBX Classes
  90
@@ -2233,7 +2233,7 @@ LAYER
 100
 AcDbSymbolTable
  70
-8
+15
   0
 LAYER
   5
@@ -2319,15 +2319,15 @@ AcDbSymbolTableRecord
 100
 AcDbLayerTableRecord
   2
-AXIS
+TITLE_BLOCK
  70
 0
  62
-1
+7
   6
-CENTER
+CONTINUOUS
 370
-18
+25
 390
 13
 347
@@ -2343,15 +2343,15 @@ AcDbSymbolTableRecord
 100
 AcDbLayerTableRecord
   2
-ELEVATION
+STRUCTURE
  70
 0
  62
-3
+5
   6
 CONTINUOUS
 370
-25
+35
 390
 13
 347
@@ -2367,13 +2367,85 @@ AcDbSymbolTableRecord
 100
 AcDbLayerTableRecord
   2
-STRUCTURE
+WASTEWATER_PIPE
  70
 0
  62
-5
+4
   6
 CONTINUOUS
+370
+50
+390
+13
+347
+21
+  0
+LAYER
+  5
+8E
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+SLUDGE_PIPE
+ 70
+0
+ 62
+30
+  6
+DASHED
+370
+35
+390
+13
+347
+21
+  0
+LAYER
+  5
+8F
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+RETURN_SLUDGE_PIPE
+ 70
+0
+ 62
+1
+  6
+CENTER
+370
+35
+390
+13
+347
+21
+  0
+LAYER
+  5
+90
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+SUPERNATANT_PIPE
+ 70
+0
+ 62
+6
+  6
+DASHDOT
 370
 25
 390
@@ -2383,7 +2455,79 @@ CONTINUOUS
   0
 LAYER
   5
-8E
+91
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+AIR_PIPE
+ 70
+0
+ 62
+140
+  6
+PHANTOM
+370
+25
+390
+13
+347
+21
+  0
+LAYER
+  5
+92
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+WATER_LEVEL
+ 70
+0
+ 62
+160
+  6
+DASHED
+370
+18
+390
+13
+347
+21
+  0
+LAYER
+  5
+93
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+ELEVATION_TEXT
+ 70
+0
+ 62
+3
+  6
+CONTINUOUS
+370
+18
+390
+13
+347
+21
+  0
+LAYER
+  5
+94
 330
 1
 100
@@ -2407,7 +2551,7 @@ CONTINUOUS
   0
 LAYER
   5
-8F
+95
 330
 1
 100
@@ -2424,6 +2568,30 @@ TEXT
 CONTINUOUS
 370
 18
+390
+13
+347
+21
+  0
+LAYER
+  5
+96
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+HIDDEN
+ 70
+0
+ 62
+8
+  6
+DASHED
+370
+13
 390
 13
 347
@@ -3229,7 +3397,7 @@ ACAD
   0
 APPID
   5
-94
+A7
 330
 3
 100
@@ -3243,7 +3411,7 @@ HATCHBACKGROUNDCOLOR
   0
 APPID
   5
-95
+A8
 330
 3
 100
@@ -5355,7 +5523,7 @@ ENTITIES
   0
 LWPOLYLINE
   5
-90
+97
 330
 17
 100
@@ -5369,45 +5537,141 @@ AcDbPolyline
  70
 0
  10
--60.0
+-80.0
  20
--40.0
+-50.0
  10
-60.0
+80.0
  20
--40.0
+-50.0
  10
-60.0
+80.0
  20
-40.0
+50.0
  10
--60.0
+-80.0
  20
-40.0
+50.0
  10
--60.0
+-80.0
  20
--40.0
+-50.0
   0
 LINE
   5
-91
+98
 330
 17
 100
 AcDbEntity
   8
-AXIS
+TITLE_BLOCK
 100
 AcDbLine
  10
+-80.0
+ 20
+-32.0
+ 30
+0.0
+ 11
+80.0
+ 21
+-32.0
+ 31
+0.0
+  0
+LINE
+  5
+99
+330
+17
+100
+AcDbEntity
+  8
+TITLE_BLOCK
+100
+AcDbLine
+ 10
+10.0
+ 20
 -50.0
+ 30
+0.0
+ 11
+10.0
+ 21
+-32.0
+ 31
+0.0
+  0
+LINE
+  5
+9A
+330
+17
+100
+AcDbEntity
+  8
+TITLE_BLOCK
+100
+AcDbLine
+ 10
+-35.0
+ 20
+-50.0
+ 30
+0.0
+ 11
+-35.0
+ 21
+-32.0
+ 31
+0.0
+  0
+LINE
+  5
+9B
+330
+17
+100
+AcDbEntity
+  8
+TITLE_BLOCK
+100
+AcDbLine
+ 10
+-80.0
+ 20
+-41.0
+ 30
+0.0
+ 11
+80.0
+ 21
+-41.0
+ 31
+0.0
+  0
+LINE
+  5
+9C
+330
+17
+100
+AcDbEntity
+  8
+HIDDEN
+100
+AcDbLine
+ 10
+-60.0
  20
 0.0
  30
 0.0
  11
-50.0
+60.0
  21
 0.0
  31
@@ -5415,31 +5679,121 @@ AcDbLine
   0
 LINE
   5
-92
+9D
 330
 17
 100
 AcDbEntity
   8
-AXIS
+HIDDEN
 100
 AcDbLine
  10
 0.0
  20
--50.0
+-30.0
  30
 0.0
  11
 0.0
  21
-50.0
+30.0
  31
 0.0
   0
 TEXT
   5
-93
+9E
+330
+17
+100
+AcDbEntity
+  8
+TITLE_BLOCK
+100
+AcDbText
+ 10
+-76.0
+ 20
+-38.5
+ 30
+0.0
+ 40
+4.0
+  1
+高程布置图
+ 11
+-76.0
+ 21
+-38.5
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+9F
+330
+17
+100
+AcDbEntity
+  8
+TITLE_BLOCK
+100
+AcDbText
+ 10
+-76.0
+ 20
+-44.5
+ 30
+0.0
+ 40
+2.5
+  1
+纵向比例尺 1:50
+ 11
+-76.0
+ 21
+-44.5
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+A0
+330
+17
+100
+AcDbEntity
+  8
+TITLE_BLOCK
+100
+AcDbText
+ 10
+-76.0
+ 20
+-48.0
+ 30
+0.0
+ 40
+2.5
+  1
+横向比例尺 1:500
+ 11
+-76.0
+ 21
+-48.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+A1
 330
 17
 100
@@ -5449,19 +5803,169 @@ TEXT
 100
 AcDbText
  10
--56.0
+-76.0
  20
-34.0
+43.0
  30
 0.0
  40
-2.5
+2.2
   1
-Blank CAD frame, units: m, scale control: 1:500
+比例控制：H 1:500, V 1:50，纵向放大 10 倍
  11
--56.0
+-76.0
  21
-34.0
+43.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+A2
+330
+17
+100
+AcDbEntity
+  8
+TITLE_BLOCK
+100
+AcDbText
+ 10
+12.0
+ 20
+-38.5
+ 30
+0.0
+ 40
+3.0
+  1
+说明
+ 11
+12.0
+ 21
+-38.5
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+A3
+330
+17
+100
+AcDbEntity
+  8
+TEXT
+100
+AcDbText
+ 10
+12.0
+ 20
+-43.5
+ 30
+0.0
+ 40
+2.0
+  1
+1. 本图标高以 m 计，标高为绝对标高。
+ 11
+12.0
+ 21
+-43.5
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+A4
+330
+17
+100
+AcDbEntity
+  8
+TEXT
+100
+AcDbText
+ 10
+12.0
+ 20
+-47.5
+ 30
+0.0
+ 40
+1.8
+  1
+2. 图中污水管、污泥管、回流污泥管及送风管采用不同线型表示。
+ 11
+12.0
+ 21
+-47.5
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+A5
+330
+17
+100
+AcDbEntity
+  8
+TITLE_BLOCK
+100
+AcDbText
+ 10
+-33.0
+ 20
+-38.5
+ 30
+0.0
+ 40
+3.0
+  1
+图例
+ 11
+-33.0
+ 21
+-38.5
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+A6
+330
+17
+100
+AcDbEntity
+  8
+TEXT
+100
+AcDbText
+ 10
+-33.0
+ 20
+-45.0
+ 30
+0.0
+ 40
+1.9
+  1
+（后续填写管线与构筑物图例）
+ 11
+-33.0
+ 21
+-45.0
  31
 0.0
 100
@@ -6557,7 +7061,7 @@ CREATED_BY_EZDXF
   3
 WRITTEN_BY_EZDXF
 350
-96
+A9
   0
 DICTIONARYVAR
   5
@@ -6569,7 +7073,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-06-23T10:07:36.199740+00:00
+1.4.4 @ 2026-06-23T10:36:32.825300+00:00
   0
 VISUALSTYLE
   5
@@ -7273,7 +7777,7 @@ X-Ray
   0
 DICTIONARYVAR
   5
-96
+A9
 330
 2D
 100
@@ -7281,7 +7785,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-06-23T10:07:36.206644+00:00
+1.4.4 @ 2026-06-23T10:36:32.831778+00:00
   0
 ENDSEC
   0
