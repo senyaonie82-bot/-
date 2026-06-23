@@ -34,7 +34,7 @@ def render_preview(path: Path = OUTPUT_PATH) -> Path:
     half_w = FRAME_WIDTH / 2
     half_h = FRAME_HEIGHT / 2
 
-    fig, ax = plt.subplots(figsize=(12, 7.5), dpi=160)
+    fig, ax = plt.subplots(figsize=(14.1, 10.0), dpi=120)
     ax.set_aspect("equal")
     ax.set_xlim(-half_w - 5, half_w + 5)
     ax.set_ylim(-half_h - 5, half_h + 5)
@@ -46,32 +46,36 @@ def render_preview(path: Path = OUTPUT_PATH) -> Path:
         color="black",
         linewidth=1.2,
     )
-    title_top = -half_h + 18
+    title_top = -half_h + 72
     ax.plot([-half_w, half_w], [title_top, title_top], color="black", linewidth=0.8)
-    ax.plot([half_w - 70, half_w - 70], [-half_h, title_top], color="black", linewidth=0.8)
-    ax.plot([half_w - 115, half_w - 115], [-half_h, title_top], color="black", linewidth=0.8)
-    ax.plot([-half_w, half_w], [-half_h + 9, -half_h + 9], color="black", linewidth=0.8)
+    ax.plot([half_w - 330, half_w - 330], [-half_h, title_top], color="black", linewidth=0.8)
+    ax.plot([half_w - 500, half_w - 500], [-half_h, title_top], color="black", linewidth=0.8)
+    ax.plot([-half_w, half_w], [-half_h + 36, -half_h + 36], color="black", linewidth=0.8)
 
-    ax.plot([-60, 60], [0, 0], color="gray", linestyle="--", linewidth=0.8)
-    ax.plot([0, 0], [-30, 30], color="gray", linestyle="--", linewidth=0.8)
+    ax.plot([-260, 260], [0, 0], color="gray", linestyle="--", linewidth=0.8)
+    ax.plot([0, 0], [-130, 130], color="gray", linestyle="--", linewidth=0.8)
 
     text_kwargs = {"fontproperties": font} if font else {}
-    ax.text(-half_w + 4, -half_h + 12, "高程布置图", fontsize=16, **text_kwargs)
-    ax.text(-half_w + 4, -half_h + 5.5, "纵向比例尺 1:50", fontsize=9, **text_kwargs)
-    ax.text(-half_w + 4, -half_h + 2.0, "横向比例尺 1:500", fontsize=9, **text_kwargs)
-    ax.text(-half_w + 4, half_h - 7, "比例控制：H 1:500，V 1:50，纵向放大 10 倍", fontsize=9, **text_kwargs)
+    ax.text(-half_w + 18, -half_h + 44, "图名：高程布置图", fontsize=16, **text_kwargs)
+    ax.text(-half_w + 18, half_h - 30, "比例控制：H 1:500，V 1:50，纵向放大 10 倍", fontsize=10, **text_kwargs)
 
-    ax.text(half_w - 68, -half_h + 12, "说明", fontsize=11, **text_kwargs)
-    ax.text(half_w - 68, -half_h + 7, "1. 本图标高以 m 计，标高为绝对标高。", fontsize=8, **text_kwargs)
-    ax.text(
-        half_w - 68,
-        -half_h + 3,
-        "2. 图中污水管、污泥管、回流污泥管及送风管采用不同线型表示。",
-        fontsize=7,
-        **text_kwargs,
+    notes_x = half_w - 330 + 10
+    ax.text(notes_x, -half_h + 48, "说明：", fontsize=11, **text_kwargs)
+    ax.text(notes_x, -half_h + 30, "1. 本图纵向比例尺为 1:50，横向比例尺为 1:500。", fontsize=8, **text_kwargs)
+    ax.text(notes_x, -half_h + 16, "2. 本图标高以 m 计，标高为绝对标高。", fontsize=8, **text_kwargs)
+
+    legend_x = half_w - 500 + 10
+    ax.text(legend_x, -half_h + 48, "图例", fontsize=11, **text_kwargs)
+    legend_items = (
+        ("污水管", "solid", 2.0),
+        ("污泥管", "dashed", 1.5),
+        ("回流污泥管", "dashdot", 1.5),
+        ("送风管", (0, (5, 2, 1, 2)), 1.2),
     )
-    ax.text(half_w - 113, -half_h + 12, "图例", fontsize=11, **text_kwargs)
-    ax.text(half_w - 113, -half_h + 5, "（后续填写管线与构筑物图例）", fontsize=8, **text_kwargs)
+    for index, (label, style, width) in enumerate(legend_items):
+        y = -half_h + 32 - index * 8
+        ax.plot([legend_x, legend_x + 46], [y, y], color="black", linestyle=style, linewidth=width)
+        ax.text(legend_x + 54, y - 2.5, label, fontsize=6, **text_kwargs)
 
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, bbox_inches="tight", pad_inches=0.1)

@@ -4,8 +4,12 @@ This repository contains the CAD drawing scaffold for the wastewater treatment
 plant course design.
 
 Current stage: elevation layout drawing framework only. The generated DXF
-contains a drawing frame, coordinate axes, title block, notes, and an empty
+contains a drawing frame, coordinate axes, title block, notes, and a reserved
 legend area; no treatment structures have been drawn yet.
+
+Model-space units are millimetres. The drawing is intended to be plotted at
+1:1 on an A1 landscape sheet. Elevation drawing scales are applied by coordinate
+conversion: horizontal scale 1:500 and vertical scale 1:50.
 
 Install dependencies:
 

@@ -29,19 +29,19 @@ class LayerSpec:
     lineweight: int = 25
 
 
-MODEL_UNITS = "m"
-DXF_INSUNITS_METRES = 6
+MODEL_UNITS = "mm"
+DXF_INSUNITS_MILLIMETERS = 4
 HORIZONTAL_SCALE = 500
 VERTICAL_SCALE = 50
 ELEVATION_SCALE = ElevationScale(horizontal=HORIZONTAL_SCALE, vertical=VERTICAL_SCALE)
 VERTICAL_EXAGGERATION = ELEVATION_SCALE.vertical_exaggeration
 
-FRAME_WIDTH = 160.0
-FRAME_HEIGHT = 100.0
-TITLE_BLOCK_HEIGHT = 18.0
-NOTES_BLOCK_WIDTH = 70.0
-LEGEND_BLOCK_WIDTH = 45.0
-AXIS_LENGTH = 120.0
+FRAME_WIDTH = 841.0
+FRAME_HEIGHT = 594.0
+TITLE_BLOCK_HEIGHT = 72.0
+NOTES_BLOCK_WIDTH = 330.0
+LEGEND_BLOCK_WIDTH = 170.0
+AXIS_LENGTH = 520.0
 
 STANDARD_LAYERS = (
     LayerSpec("FRAME", "图框", color=7, lineweight=35),
@@ -69,11 +69,12 @@ def to_elevation_coordinates(
 ) -> tuple[float, float]:
     """Convert real plant distance/elevation to elevation drawing coordinates.
 
-    The horizontal coordinate follows the plant flow distance. The vertical
-    coordinate applies the 1:50 vertical scale relative to the 1:500 horizontal
-    scale, so vertical differences are exaggerated by 10 times on the drawing.
+    DXF model space uses millimetres. The horizontal coordinate is scaled by
+    1:500, and the vertical coordinate is scaled by 1:50. Therefore, 1 m of
+    real plant distance becomes 2 mm on the drawing, while 1 m of elevation
+    difference becomes 20 mm on the drawing.
     """
 
-    x = horizontal_distance_m - origin_distance_m
-    y = (absolute_elevation_m - datum_elevation_m) * VERTICAL_EXAGGERATION
-    return x, y
+    x_mm = (horizontal_distance_m - origin_distance_m) * 1000 / HORIZONTAL_SCALE
+    y_mm = (absolute_elevation_m - datum_elevation_m) * 1000 / VERTICAL_SCALE
+    return x_mm, y_mm

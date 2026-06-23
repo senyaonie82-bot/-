@@ -13,7 +13,7 @@ import ezdxf
 
 from cad_config import (
     AXIS_LENGTH,
-    DXF_INSUNITS_METRES,
+    DXF_INSUNITS_MILLIMETERS,
     ELEVATION_SCALE,
     FRAME_HEIGHT,
     FRAME_WIDTH,
@@ -26,8 +26,8 @@ from cad_config import (
 
 def create_document() -> ezdxf.document.Drawing:
     doc = ezdxf.new("R2010", setup=True)
-    doc.units = DXF_INSUNITS_METRES
-    doc.header["$INSUNITS"] = DXF_INSUNITS_METRES
+    doc.units = DXF_INSUNITS_MILLIMETERS
+    doc.header["$INSUNITS"] = DXF_INSUNITS_MILLIMETERS
 
     for spec in STANDARD_LAYERS:
         if spec.name not in doc.layers:
@@ -96,29 +96,41 @@ def add_elevation_frame(doc: ezdxf.document.Drawing) -> None:
     msp.add_line((-axis, 0), (axis, 0), dxfattribs={"layer": "HIDDEN"})
     msp.add_line((0, -axis / 2), (0, axis / 2), dxfattribs={"layer": "HIDDEN"})
 
-    _add_text(msp, "高程布置图", (-half_w + 4, -half_h + 11.5), height=4.0, layer="TITLE_BLOCK")
-    _add_text(msp, "纵向比例尺 1:50", (-half_w + 4, -half_h + 5.5), layer="TITLE_BLOCK")
-    _add_text(msp, "横向比例尺 1:500", (-half_w + 4, -half_h + 2.0), layer="TITLE_BLOCK")
+    _add_text(msp, "图名：高程布置图", (-half_w + 18, -half_h + 44), height=12.0, layer="TITLE_BLOCK")
     _add_text(
         msp,
         f"比例控制：{ELEVATION_SCALE.label}，纵向放大 {ELEVATION_SCALE.vertical_exaggeration:g} 倍",
-        (-half_w + 4, half_h - 7),
-        height=2.2,
+        (-half_w + 18, half_h - 30),
+        height=8.0,
     )
 
     notes_x = half_w - NOTES_BLOCK_WIDTH + 2
-    _add_text(msp, "说明", (notes_x, -half_h + 11.5), height=3.0, layer="TITLE_BLOCK")
-    _add_text(msp, "1. 本图标高以 m 计，标高为绝对标高。", (notes_x, -half_h + 6.5), height=2.0)
+    _add_text(msp, "说明：", (notes_x + 8, -half_h + 48), height=8.0, layer="TITLE_BLOCK")
     _add_text(
         msp,
-        "2. 图中污水管、污泥管、回流污泥管及送风管采用不同线型表示。",
-        (notes_x, -half_h + 2.5),
-        height=1.8,
+        "1. 本图纵向比例尺为 1:50，横向比例尺为 1:500。",
+        (notes_x + 8, -half_h + 30),
+        height=6.0,
+    )
+    _add_text(
+        msp,
+        "2. 本图标高以 m 计，标高为绝对标高。",
+        (notes_x + 8, -half_h + 16),
+        height=6.0,
     )
 
     legend_x = half_w - NOTES_BLOCK_WIDTH - LEGEND_BLOCK_WIDTH + 2
-    _add_text(msp, "图例", (legend_x, -half_h + 11.5), height=3.0, layer="TITLE_BLOCK")
-    _add_text(msp, "（后续填写管线与构筑物图例）", (legend_x, -half_h + 5.0), height=1.9)
+    _add_text(msp, "图例", (legend_x + 8, -half_h + 48), height=8.0, layer="TITLE_BLOCK")
+    legend_items = (
+        ("污水管", "WASTEWATER_PIPE"),
+        ("污泥管", "SLUDGE_PIPE"),
+        ("回流污泥管", "RETURN_SLUDGE_PIPE"),
+        ("送风管", "AIR_PIPE"),
+    )
+    for index, (label, layer) in enumerate(legend_items):
+        y = -half_h + 32 - index * 8
+        msp.add_line((legend_x + 8, y), (legend_x + 54, y), dxfattribs={"layer": layer})
+        _add_text(msp, label, (legend_x + 62, y - 2.5), height=4.0)
 
 
 def save_elevation_frame_dxf(path: Path) -> Path:
