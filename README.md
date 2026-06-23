@@ -34,3 +34,9 @@ Generate elevation layout V1:
 ```bash
 python src/draw_elevation_layout_v1.py
 ```
+
+Generate elevation layout V2:
+
+```bash
+python src/draw_elevation_layout_v2.py
+```
