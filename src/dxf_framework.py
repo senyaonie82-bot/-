@@ -7,6 +7,7 @@ drawn in this stage.
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from pathlib import Path
 
 import ezdxf
@@ -57,7 +58,7 @@ def _add_text(
     ).set_placement(insert)
 
 
-def add_elevation_frame(doc: ezdxf.document.Drawing) -> None:
+def add_elevation_frame(doc: ezdxf.document.Drawing, extra_notes: Sequence[str] = ()) -> None:
     msp = doc.modelspace()
     half_w = FRAME_WIDTH / 2
     half_h = FRAME_HEIGHT / 2
@@ -106,18 +107,13 @@ def add_elevation_frame(doc: ezdxf.document.Drawing) -> None:
 
     notes_x = half_w - NOTES_BLOCK_WIDTH + 2
     _add_text(msp, "说明：", (notes_x + 8, -half_h + 48), height=8.0, layer="TITLE_BLOCK")
-    _add_text(
-        msp,
+    notes = [
         "1. 本图纵向比例尺为 1:50，横向比例尺为 1:500。",
-        (notes_x + 8, -half_h + 30),
-        height=6.0,
-    )
-    _add_text(
-        msp,
         "2. 本图标高以 m 计，标高为绝对标高。",
-        (notes_x + 8, -half_h + 16),
-        height=6.0,
-    )
+        *extra_notes,
+    ]
+    for index, note in enumerate(notes):
+        _add_text(msp, note, (notes_x + 8, -half_h + 30 - index * 11), height=5.0)
 
     legend_x = half_w - NOTES_BLOCK_WIDTH - LEGEND_BLOCK_WIDTH + 2
     _add_text(msp, "图例", (legend_x + 8, -half_h + 48), height=8.0, layer="TITLE_BLOCK")

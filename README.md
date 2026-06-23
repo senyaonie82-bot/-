@@ -28,3 +28,9 @@ Generate the PNG preview:
 ```bash
 python src/render_preview.py
 ```
+
+Generate elevation layout V1:
+
+```bash
+python src/draw_elevation_layout_v1.py
+```
